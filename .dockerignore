@@ -1,0 +1,81 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+*.egg
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+tests/
+
+# Environment
+.env
+.env.local
+.env.*.local
+*.env
+
+# Logs
+*.log
+logs/
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Backups
+backups/
+
+# Git
+.git/
+.gitignore
+.gitattributes
+.github/
+
+# Docker
+Dockerfile
+docker-compose*.yml
+.dockerignore
+
+# Documentation
+README.md
+README.docker.md
+docs/
+*.md
+
+# CI/CD
+.gitlab-ci.yml
+
+# OS
+Thumbs.db
+
+# Project specific
+plans/
+.claude/
+.mypy_cache/
+poetry.lock.bak
