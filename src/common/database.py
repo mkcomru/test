@@ -11,11 +11,7 @@ class BaseModel(DeclarativeBase):
     pass
 
 
-class IdMixin:
-    id: Mapped[int] = mapped_column(primary_key=True)
-
-
-engine = create_async_engine(settings.database.url, echo=settings.debug, pool_size=10, max_overflow=20)
+engine = create_async_engine(str(settings.database.url), echo=settings.debug, pool_size=10, max_overflow=20)
 
 SessionLocal = async_sessionmaker(engine, expire_on_commit=False, autoflush=False)
 
