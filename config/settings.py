@@ -1,7 +1,8 @@
 from functools import lru_cache
 from typing import Literal
+from urllib.parse import quote_plus
 
-from pydantic import BaseModel, Field, HttpUrl, PostgresDsn, SecretStr
+from pydantic import BaseModel, Field, HttpUrl, SecretStr
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -13,14 +14,11 @@ class Database(BaseModel):
     name: str = Field(default="transfers", min_length=1)
 
     @property
-    def url(self) -> PostgresDsn:
-        return PostgresDsn.build(
-            scheme="postgresql+asyncpg",
-            username=self.user,
-            password=self.password.get_secret_value(),
-            host=self.host,
-            port=self.port,
-            path=self.name,
+    def url(self) -> str:
+        password = quote_plus(self.password.get_secret_value())
+        return (
+            f"postgresql+asyncpg://{self.user}:{password}"
+            f"@{self.host}:{self.port}/{self.name}"
         )
 
 
